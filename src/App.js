@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 import Title from './components/title';
+import ChangeColor from './components/changeColor';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,6 +20,10 @@ class App extends React.Component {
             img: 'https://www.laespanolaaceites.com/wp-content/uploads/2019/06/pizza-con-chorizo-jamon-y-queso.jpg',
             name: 'pizza'
           }
+      },
+      newFood:{
+        img: '',
+        name: ''
       }
     }
   }
@@ -36,14 +41,11 @@ class App extends React.Component {
     return (
       <div style={{backgroundColor: this.state.color}} >
         <Title />
+
         <div className="container" >
           <div className="left" >
-            <div className="container-change" >
-              <p> Change Color </p>
-              <button onClick={this.handleChangeColor} >
-                Random Color
-              </button>
-            </div>
+
+            <ChangeColor handleChangeColor ={this.handleChangeColor} />
 
 
             <div className="container-add">
