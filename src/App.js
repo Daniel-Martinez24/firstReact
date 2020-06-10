@@ -3,6 +3,8 @@ import './App.css';
 
 import Title from './components/title';
 import ChangeColor from './components/changeColor';
+import NewFood from './components/NewFood';
+import Foods from './components/Foods';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,16 +16,19 @@ class App extends React.Component {
       foods: {
           burger: {
             img: 'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg',
-            name: 'burger'
+            name: 'burger',
+            cantidad: 3
           },
           pizza: {
             img: 'https://www.laespanolaaceites.com/wp-content/uploads/2019/06/pizza-con-chorizo-jamon-y-queso.jpg',
-            name: 'pizza'
+            name: 'pizza',
+            cantidad: 2
           }
       },
       newFood:{
         img: '',
-        name: ''
+        name: '',
+        cantidad: 1
       }
     }
   }
@@ -47,7 +52,7 @@ class App extends React.Component {
 
             <ChangeColor handleChangeColor ={this.handleChangeColor} />
 
-
+            <NewFood />
             <div className="container-add">
               <p>New Food</p>
               <label for="file">name</label>
@@ -59,30 +64,7 @@ class App extends React.Component {
             </div>
           </div>
 
-          <div className="container-food">
-            <div className="line">
-              <button>+</button>
-              <button>-</button>
-              <div className="food">
-                <p>Burger</p>
-                <img src="https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg" />
-              </div>
-
-              <div className="food">
-                <p>Burger</p>
-                <img src="https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg" />
-              </div>
-            </div>
-
-            <div className="line">
-              <button>+</button>
-              <button>-</button>
-              <div className="food">
-                <p>Burger</p>
-                <img src="https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg" />
-              </div>
-            </div>
-          </div>
+          <Foods />
         </div>
 
       </div>
