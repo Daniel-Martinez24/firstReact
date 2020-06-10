@@ -1,26 +1,44 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChangeColor = this.handleChangeColor.bind(this);
+    this.state = {
+      color: 'red',
+      listColors: ['yellow', 'red', 'blue', 'green']
+    }
+  }
 
+  handleChangeColor = () => {
+    let listColors = this.state.listColors.slice();
+    const random = Math.floor(Math.random()*(listColors.length));
+    const newColor = listColors.splice(random, 1);
+    this.setState({
+      color: newColor
+    })
+  }
+
+  render ()  {
+    return (
+      <div className="container" style={{backgroundColor: this.state.color}} >
+        <p>{this.state.listColors}</p>
+        <h1>Menu</h1>
+        <div className="Coninar-change" >
+          <p> Change Color </p>
+          <button onClick={this.handleChangeColor} >
+            Random Color
+          </button>
+        </div>
+        <div className="container-add">
+          <p>Name</p>
+          <input type="file" ></input>
+        </div>
+
+      </div>
+    );
+
+  }
+}
 export default App;
