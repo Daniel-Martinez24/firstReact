@@ -5,11 +5,11 @@ function NewFood(props) {
         <div className="container-add">
             <p>New Food</p>
             <label htmlFor="file">name</label>
-            <input type="text"></input>
-            <label htmlFor="file">Choose a file</label>
-            <input type="file" value="" style={{ maxWidth: '70%'}}  accept=".png, .jpg" ></input>
+            <input value={props.newName} onChange={props.handleChange} type="text"></input>
+            <label htmlFor="file">URL de la imagen</label>
+            <input value={props.newImg} onChange={props.handleChange} type="text" ></input>
             <br />
-            <button>Add !</button>
+            <button onClick={props.handleAddFood}>Add !</button>
         </div>
     );
 }

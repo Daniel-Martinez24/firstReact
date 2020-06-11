@@ -10,6 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.handleChangeColor = this.handleChangeColor.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       color: 'red',
       listColors: ['yellow', 'red', 'blue', 'green'],
@@ -25,12 +26,8 @@ class App extends React.Component {
             counter: 2
           }
         ],
-      newFood: {
-        img: '',
-        name: '',
-        cantidad: 1
-      
-      }
+      newName: '',
+      newImg: 'https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2019/11/spaghetti-con-champinones-y-calabacitas.jpg'
     }
   }
 
@@ -41,6 +38,9 @@ class App extends React.Component {
     this.setState({
       color: newColor
     })
+  }
+  handleChange(event) {
+    this.setState({newName: event.target.value});
   }
 
   handleAddCounter = (e) =>{
@@ -60,7 +60,6 @@ class App extends React.Component {
   }
 
   handleQuitCounter = (e) =>{
-    console.log(e);
     const foods = this.state.foods.slice();
     const newFoods = foods.map((food) => {
       if (food.name === e && food.counter > 1) {
@@ -75,7 +74,18 @@ class App extends React.Component {
     })
   }
 
-
+  handleAddFood = () => {
+    const newFood = {
+      name: this.state.newName,
+      img: this.state.newImg,
+      counter: 1
+    }
+    let newFoods = this.state.foods.slice();
+    newFoods.push(newFood);
+    this.setState({
+      foods: newFoods
+    })
+  }
 
   render ()  {
     return (
@@ -87,7 +97,12 @@ class App extends React.Component {
 
             <ChangeColor handleChangeColor ={this.handleChangeColor} />
 
-            <NewFood />
+            <NewFood 
+            newFood={this.state.newName}
+            newImg={this.state.newImg}
+            handleAddFood = {this.handleAddFood}
+            handleChange = {this.handleChange}
+            />
           </div>
 
           <Foods 
