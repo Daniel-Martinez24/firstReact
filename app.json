@@ -1,0 +1,7 @@
+{
+    "name": "Menu",
+    "description": "A menu using reactjs",
+    "repository": "https://github.com/Daniel-Martinez24/firstReact",
+    "keywords": ["node", "express", "heroku"],
+    "image": "heroku/nodejs"
+  }
