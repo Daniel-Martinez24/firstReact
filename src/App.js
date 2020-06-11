@@ -13,22 +13,23 @@ class App extends React.Component {
     this.state = {
       color: 'red',
       listColors: ['yellow', 'red', 'blue', 'green'],
-      foods: {
-          burger: {
+      foods: [
+          {
             img: 'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg',
             name: 'burger',
-            cantidad: 3
+            counter: 3
           },
-          pizza: {
+          {
             img: 'https://www.laespanolaaceites.com/wp-content/uploads/2019/06/pizza-con-chorizo-jamon-y-queso.jpg',
             name: 'pizza',
-            cantidad: 2
+            counter: 2
           }
-      },
-      newFood:{
+        ],
+      newFood: {
         img: '',
         name: '',
         cantidad: 1
+      
       }
     }
   }
@@ -42,6 +43,40 @@ class App extends React.Component {
     })
   }
 
+  handleAddCounter = (e) =>{
+    console.log(e);
+    const foods = this.state.foods.slice();
+    const newFoods = foods.map((food) => {
+      if (food.name === e) {
+       food.counter++;
+     }
+     return food;
+    }
+     
+    )
+    this.setState({
+      foods: newFoods
+    })
+  }
+
+  handleQuitCounter = (e) =>{
+    console.log(e);
+    const foods = this.state.foods.slice();
+    const newFoods = foods.map((food) => {
+      if (food.name === e && food.counter > 1) {
+       food.counter--;
+     }
+     return food;
+    }
+     
+    )
+    this.setState({
+      foods: newFoods
+    })
+  }
+
+
+
   render ()  {
     return (
       <div style={{backgroundColor: this.state.color}} >
@@ -53,18 +88,13 @@ class App extends React.Component {
             <ChangeColor handleChangeColor ={this.handleChangeColor} />
 
             <NewFood />
-            <div className="container-add">
-              <p>New Food</p>
-              <label for="file">name</label>
-              <input type="text"></input>
-              <label for="file">Choose a file</label>
-              <input type="file" value="" style={{ maxWidth: '70%'}}  accept=".png, .jpg" ></input>
-              <br />
-              <button>Add !</button>
-            </div>
           </div>
 
-          <Foods />
+          <Foods 
+          foods={this.state.foods} 
+          handleAddCounter={this.handleAddCounter} 
+          handleQuitCounter = {this.handleQuitCounter}
+          />
         </div>
 
       </div>

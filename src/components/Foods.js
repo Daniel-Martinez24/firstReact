@@ -4,7 +4,15 @@ import Line from './Line';
 function Foods(props) {
     return (  
         <div className="container-food">
-            <Line />
+        {props.foods.map((food, id) => 
+            <Line
+            key={id}
+            id = {id}
+            food={food}
+            handleAddCounter = {props.handleAddCounter}
+            handleQuitCounter = {props.handleQuitCounter}
+            /> 
+        )}
          
         </div>
     );
