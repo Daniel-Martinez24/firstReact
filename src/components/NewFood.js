@@ -5,9 +5,9 @@ function NewFood(props) {
         <div className="container-add">
             <p>New Food</p>
             <label htmlFor="file">name</label>
-            <input value={props.newName} onChange={props.handleChange} type="text"></input>
+            <input value={props.newName} onChange={props.handleChangeNewName} type="text"></input>
             <label htmlFor="file">URL de la imagen</label>
-            <input value={props.newImg} onChange={props.handleChange} type="text" ></input>
+            <input value={props.newImg} onChange={props.handleChangeNewImg} type="text" ></input>
             <br />
             <button onClick={props.handleAddFood}>Add !</button>
         </div>

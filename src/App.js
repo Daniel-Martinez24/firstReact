@@ -10,7 +10,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.handleChangeColor = this.handleChangeColor.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeNewImg = this.handleChangeNewImg.bind(this);
+    this.handleChangeNewName = this.handleChangeNewName.bind(this);
     this.state = {
       color: 'red',
       listColors: ['yellow', 'red', 'blue', 'green'],
@@ -39,8 +40,11 @@ class App extends React.Component {
       color: newColor
     })
   }
-  handleChange(event) {
+  handleChangeNewName(event) {
     this.setState({newName: event.target.value});
+  }
+  handleChangeNewImg(event) {
+    this.setState({newImg: event.target.value});
   }
 
   handleAddCounter = (e) =>{
@@ -101,7 +105,8 @@ class App extends React.Component {
             newFood={this.state.newName}
             newImg={this.state.newImg}
             handleAddFood = {this.handleAddFood}
-            handleChange = {this.handleChange}
+            handleChangeNewName = {this.handleChangeNewName}
+            handleChangeNewImg = {this.handleChangeNewImg}
             />
           </div>
 
